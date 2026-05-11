@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192" width="192" height="192">
+  <!-- Fundo bege quente -->
+  <rect width="192" height="192" rx="38" fill="#F5EFE0"/>
+
+  <!-- Círculo central com fundo navy escuro -->
+  <circle cx="96" cy="96" r="76" fill="#1B3A5C"/>
+
+  <!-- Ornamento dourado: linha + diamante (referência ao site) -->
+  <line x1="48" y1="68" x2="78" y2="68" stroke="#C49030" stroke-width="1.2" opacity="0.7"/>
+  <rect x="92" y="62" width="8" height="8" transform="rotate(45 96 66)" fill="#C49030"/>
+  <line x1="114" y1="68" x2="144" y2="68" stroke="#C49030" stroke-width="1.2" opacity="0.7"/>
+
+  <!-- Letra M estilizada (Playfair-like) em dourado -->
+  <text x="96" y="124" text-anchor="middle"
+        font-family="Playfair Display, Georgia, serif"
+        font-weight="600"
+        font-size="62"
+        fill="#C49030"
+        letter-spacing="-1">M</text>
+
+  <!-- Ornamento inferior -->
+  <line x1="48" y1="146" x2="78" y2="146" stroke="#C49030" stroke-width="1.2" opacity="0.7"/>
+  <rect x="92" y="140" width="8" height="8" transform="rotate(45 96 144)" fill="#C49030"/>
+  <line x1="114" y1="146" x2="144" y2="146" stroke="#C49030" stroke-width="1.2" opacity="0.7"/>
+</svg>

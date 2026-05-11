@@ -1,0 +1,33 @@
+# Dependências
+node_modules/
+server/node_modules/
+
+# Variáveis de ambiente (NUNCA commitar)
+.env
+.env.local
+.env.production
+*.env
+
+# Credenciais
+*service-account*.json
+*credentials*.json
+
+# Logs
+*.log
+npm-debug.log*
+
+# Sistema
+.DS_Store
+Thumbs.db
+*.swp
+
+# IDEs
+.vscode/
+.idea/
+
+# Build
+dist/
+build/
+
+# Dados runtime (assinaturas push, lembretes, backups)
+data/

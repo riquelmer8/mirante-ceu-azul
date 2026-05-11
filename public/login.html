@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#1B3A5C" />
+  <title>Entrar · Mirante Céu Azul</title>
+  <link rel="manifest" href="/manifest.json" />
+  <link rel="icon" href="/icons/icon-192.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="/icons/icon-192.svg" />
+  <link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body>
+  <main class="login-tela">
+    <div class="login-card">
+      <img class="logo-img logo-img--grande" src="/icons/logo-mirante.png" alt="Sítio Mirante Céu Azul" />
+
+      <p class="login-subtitulo" style="margin-top:0.75rem">Painel administrativo</p>
+
+      <form id="form-login" autocomplete="on" novalidate>
+        <div class="form-grupo">
+          <label class="form-label" for="usuario">Usuário</label>
+          <input class="form-input" type="text" id="usuario" name="usuario" required autocomplete="username" autofocus />
+        </div>
+        <div class="form-grupo">
+          <label class="form-label" for="senha">Senha</label>
+          <input class="form-input" type="password" id="senha" name="senha" required autocomplete="current-password" />
+        </div>
+
+        <div id="login-erro" aria-live="polite"></div>
+
+        <button id="btn-entrar" type="submit" class="btn btn-primario" style="width:100%;margin-top:0.5rem">
+          <span>Entrar</span>
+        </button>
+      </form>
+
+      <p style="text-align:center;color:var(--texto-leve);font-size:0.8125rem;margin:1.75rem 0 0">
+        <a href="/" style="color:var(--texto-suave);text-decoration:none">← Voltar para a agenda pública</a>
+      </p>
+    </div>
+  </main>
+
+  <script src="/js/login.js"></script>
+</body>
+</html>

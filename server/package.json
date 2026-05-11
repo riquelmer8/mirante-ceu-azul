@@ -1,0 +1,25 @@
+{
+  "name": "mirante-ceu-azul-painel",
+  "version": "1.0.0",
+  "description": "Painel de agendamentos do Sítio Mirante Céu Azul",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "gerar-senha": "node generate-password.js",
+    "gerar-vapid": "node generate-vapid.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cookie-parser": "^1.4.6",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "express-rate-limit": "^7.4.1",
+    "googleapis": "^144.0.0",
+    "jsonwebtoken": "^9.0.2",
+    "web-push": "^3.6.7"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}

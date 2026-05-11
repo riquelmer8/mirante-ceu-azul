@@ -1,0 +1,39 @@
+# Docker Compose pronto pra Easypanel + Traefik.
+# Ajuste o domínio (agenda.zuva.com.br) para o seu antes de subir.
+
+services:
+  mirante:
+    build: .
+    container_name: mirante-painel
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+      - JWT_SECRET=${JWT_SECRET}
+      - ADMIN_USERNAME=${ADMIN_USERNAME}
+      - ADMIN_PASSWORD_HASH=${ADMIN_PASSWORD_HASH}
+      - GOOGLE_CALENDAR_ID=${GOOGLE_CALENDAR_ID}
+      - GOOGLE_SERVICE_ACCOUNT_JSON=${GOOGLE_SERVICE_ACCOUNT_JSON}
+      - WHATSAPP_NUMBER=${WHATSAPP_NUMBER}
+    expose:
+      - "3000"
+    networks:
+      - traefik
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=traefik"
+      # HTTP -> redireciona pra HTTPS
+      - "traefik.http.routers.mirante-http.rule=Host(`agenda.zuva.com.br`)"
+      - "traefik.http.routers.mirante-http.entrypoints=web"
+      - "traefik.http.routers.mirante-http.middlewares=mirante-https-redirect"
+      - "traefik.http.middlewares.mirante-https-redirect.redirectscheme.scheme=https"
+      # HTTPS
+      - "traefik.http.routers.mirante.rule=Host(`agenda.zuva.com.br`)"
+      - "traefik.http.routers.mirante.entrypoints=websecure"
+      - "traefik.http.routers.mirante.tls=true"
+      - "traefik.http.routers.mirante.tls.certresolver=letsencrypt"
+      - "traefik.http.services.mirante.loadbalancer.server.port=3000"
+
+networks:
+  traefik:
+    external: true
