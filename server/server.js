@@ -5,7 +5,6 @@ require('dotenv').config({ path: require('path').join(__dirname, '..', '.env') }
 const path = require('path');
 const express = require('express');
 const cookieParser = require('cookie-parser');
-const rateLimit = require('express-rate-limit');
 
 const calendar = require('./calendar');
 const auth = require('./auth');
@@ -21,17 +20,6 @@ const PUBLIC_DIR = path.join(__dirname, '..', 'public');
 app.set('trust proxy', 1); // necessário pro rate limit funcionar atrás do Traefik
 app.use(express.json({ limit: '1mb' }));
 app.use(cookieParser());
-
-// =====================
-// Rate limit no login (5 tentativas / 15min por IP)
-// =====================
-const limitarLogin = rateLimit({
-  windowMs: 15 * 60 * 1000,
-  max: 5,
-  standardHeaders: true,
-  legacyHeaders: false,
-  message: { erro: 'Muitas tentativas. Tente novamente em 15 minutos.' },
-});
 
 // =====================
 // Páginas HTML
@@ -58,7 +46,7 @@ app.get('/api/config', (req, res) => {
 // =====================
 // Auth
 // =====================
-app.post('/api/auth/login', limitarLogin, async (req, res) => {
+app.post('/api/auth/login', async (req, res) => {
   const { usuario, senha } = req.body || {};
   const resultado = await auth.login(usuario, senha);
   if (!resultado.ok) return res.status(401).json({ erro: resultado.erro });
